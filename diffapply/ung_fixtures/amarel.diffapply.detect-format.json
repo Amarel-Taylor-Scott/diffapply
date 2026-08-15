@@ -1,0 +1,23 @@
+[
+  {
+    "inputs": {
+      "patch": "math.py\n<<<<<<< SEARCH\n    return a - b\n=======\n    return a + b\n>>>>>>> REPLACE\n"
+    },
+    "parameters": {},
+    "expect": "search-replace"
+  },
+  {
+    "inputs": {
+      "patch": "--- a/math.py\n+++ b/math.py\n@@ -1,2 +1,2 @@\n def add(a, b):\n-    return a - b\n+    return a + b\n"
+    },
+    "parameters": {},
+    "expect": "unified"
+  },
+  {
+    "inputs": {
+      "patch": "just a prose reply, no edits"
+    },
+    "parameters": {},
+    "expect": "unknown"
+  }
+]

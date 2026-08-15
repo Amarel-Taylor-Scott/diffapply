@@ -1,0 +1,33 @@
+[
+  {
+    "inputs": {
+      "patch": "math.py\n<<<<<<< SEARCH\n    return a - b\n=======\n    return a + b\n>>>>>>> REPLACE\n"
+    },
+    "parameters": {},
+    "expect": [
+      {
+        "file": "math.py",
+        "search": "    return a - b",
+        "replace": "    return a + b"
+      }
+    ]
+  },
+  {
+    "inputs": {
+      "patch": "math.py\n<<<<<<< SEARCH\n    return a - b\n=======\n    return a + b\n>>>>>>> REPLACE\n\nnotes.txt\n<<<<<<< SEARCH\n=======\nRemember to bump the version.\n>>>>>>> REPLACE\n"
+    },
+    "parameters": {},
+    "expect": [
+      {
+        "file": "math.py",
+        "search": "    return a - b",
+        "replace": "    return a + b"
+      },
+      {
+        "file": "notes.txt",
+        "search": "",
+        "replace": "Remember to bump the version."
+      }
+    ]
+  }
+]

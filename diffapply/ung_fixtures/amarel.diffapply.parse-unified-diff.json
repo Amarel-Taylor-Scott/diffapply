@@ -1,0 +1,88 @@
+[
+  {
+    "inputs": {
+      "patch": "--- a/math.py\n+++ b/math.py\n@@ -1,2 +1,2 @@\n def add(a, b):\n-    return a - b\n+    return a + b\n"
+    },
+    "parameters": {},
+    "expect": [
+      {
+        "path": "math.py",
+        "hunks": [
+          {
+            "old_start": 1,
+            "lines": [
+              [
+                " ",
+                "def add(a, b):"
+              ],
+              [
+                "-",
+                "    return a - b"
+              ],
+              [
+                "+",
+                "    return a + b"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "inputs": {
+      "patch": "diff --git a/app.py b/app.py\n--- a/app.py\n+++ b/app.py\n@@ -1,3 +1,3 @@\n import sys\n-DEBUG = True\n+DEBUG = False\n PORT = 8080\ndiff --git a/config.ini b/config.ini\n--- a/config.ini\n+++ b/config.ini\n@@ -1,2 +1,2 @@\n [server]\n-workers = 2\n+workers = 4\n"
+    },
+    "parameters": {},
+    "expect": [
+      {
+        "path": "app.py",
+        "hunks": [
+          {
+            "old_start": 1,
+            "lines": [
+              [
+                " ",
+                "import sys"
+              ],
+              [
+                "-",
+                "DEBUG = True"
+              ],
+              [
+                "+",
+                "DEBUG = False"
+              ],
+              [
+                " ",
+                "PORT = 8080"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "path": "config.ini",
+        "hunks": [
+          {
+            "old_start": 1,
+            "lines": [
+              [
+                " ",
+                "[server]"
+              ],
+              [
+                "-",
+                "workers = 2"
+              ],
+              [
+                "+",
+                "workers = 4"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

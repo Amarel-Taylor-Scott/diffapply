@@ -1,0 +1,57 @@
+[
+  {
+    "inputs": {
+      "files": {
+        "math.py": "def add(a, b):\n    return a - b\n\ndef mul(a, b):\n    return a * b\n"
+      },
+      "patch": "math.py\n<<<<<<< SEARCH\n    return a - b\n=======\n    return a + b\n>>>>>>> REPLACE\n"
+    },
+    "parameters": {},
+    "expect": {
+      "files": {
+        "math.py": "def add(a, b):\n    return a + b\n\ndef mul(a, b):\n    return a * b\n"
+      },
+      "results": [
+        {
+          "path": "math.py",
+          "ok": true,
+          "detail": "exact match",
+          "changed": true
+        }
+      ],
+      "applied": 1,
+      "failed": 0
+    }
+  },
+  {
+    "inputs": {
+      "files": {
+        "math.py": "def add(a, b):\n    return a - b\n\ndef mul(a, b):\n    return a * b\n"
+      },
+      "patch": "math.py\n<<<<<<< SEARCH\n    return a / b\n=======\n    return a // b\n>>>>>>> REPLACE\n\nnotes.txt\n<<<<<<< SEARCH\n=======\nRemember to bump the version.\n>>>>>>> REPLACE\n"
+    },
+    "parameters": {},
+    "expect": {
+      "files": {
+        "math.py": "def add(a, b):\n    return a - b\n\ndef mul(a, b):\n    return a * b\n",
+        "notes.txt": "Remember to bump the version."
+      },
+      "results": [
+        {
+          "path": "math.py",
+          "ok": false,
+          "detail": "search not found",
+          "changed": false
+        },
+        {
+          "path": "notes.txt",
+          "ok": true,
+          "detail": "created/overwritten",
+          "changed": true
+        }
+      ],
+      "applied": 1,
+      "failed": 1
+    }
+  }
+]
